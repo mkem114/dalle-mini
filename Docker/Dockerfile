@@ -11,7 +11,10 @@ RUN pip install --upgrade "jax[cuda]" -f https://storage.googleapis.com/jax-rele
   git+https://github.com/borisdayma/dalle-mini.git \
   git+https://github.com/patil-suraj/vqgan-jax.git
 
-RUN pip install jupyter
+RUN pip install python-dotenv flask gunicorn
 
-WORKDIR /workspace
+RUN git config --global --add safe.directory /workspace
 
+WORKDIR /workspace/tools/inference
+
+CMD [ "gunicorn", "--timeout", "300", "wsgi:app"]
