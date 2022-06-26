@@ -6,3 +6,4 @@ wandb/
 jax_cache/
 .idea/
 .vscode/
+.env
